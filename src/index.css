@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Quicksand:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-dark-green: #283618;
+  --color-burnt-orange: #bc6c25;
+  --color-text-heading: #17200e;
+  --color-text-body: #393939;
+  --color-cream: #fffef7;
+  --color-border-subtle: #e1e3df;
+  --color-surface-muted: #f4f4f5;
+  --color-divider: #d6d6d6;
+  --color-sky-tint: #e7f4ff;
+  --color-butter: #f5f0cc;
+  --color-honey: #fce3a2;
+
+  /* iPad Pro 12.9" landscape is 1366px, so the desktop tier starts above it —
+     everything from 640 to 1399 gets the tablet treatment. Declared in rem so it
+     sorts after the default rem breakpoints; a px value is emitted before them. */
+  --breakpoint-xl: 87.5rem;
+
+  --font-serif: "PT Serif", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Quicksand", sans-serif;
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-text-body);
+  font-family: var(--font-sans);
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
