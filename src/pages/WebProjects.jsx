@@ -1,11 +1,11 @@
 import ProjectCard from "../components/web-projects/ProjectCard";
 import Results from "../components/Results";
-import awardco from "../assets/images/web-projects/awardco.png";
-import workstreet from "../assets/images/web-projects/workstreet.png";
-import tavaHealth from "../assets/images/web-projects/tava-health.png";
-import zenhub from "../assets/images/web-projects/zenhub.png";
-import wisefi from "../assets/images/web-projects/wisefi.png";
-import sixtySixDegrees from "../assets/images/web-projects/66-degrees.png";
+import awardco from "../assets/images/web-projects/awardco.webp";
+import workstreet from "../assets/images/web-projects/workstreet.webp";
+import tavaHealth from "../assets/images/web-projects/tava-health.webp";
+import zenhub from "../assets/images/web-projects/zenhub.webp";
+import wisefi from "../assets/images/web-projects/wisefi.webp";
+import sixtySixDegrees from "../assets/images/web-projects/66-degrees.webp";
 
 const projects = [
   { name: "Awardco", href: "https://award.co", image: awardco },
@@ -38,8 +38,9 @@ export default function WebProjects() {
 
       <section className="px-6 pb-20 sm:px-10 lg:px-16 lg:pb-28">
         <div className="mx-auto grid max-w-[1216px] grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
-          {projects.map((project) => (
-            <ProjectCard key={project.name} {...project} />
+          {/* The first row is above the fold on desktop and holds the LCP image. */}
+          {projects.map((project, i) => (
+            <ProjectCard key={project.name} {...project} priority={i < 2} />
           ))}
         </div>
       </section>
