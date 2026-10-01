@@ -1,7 +1,7 @@
 import { capture } from "../../lib/posthog";
 import ExternalLink from "../icons/ExternalLink";
 
-export default function ProjectCard({ name, href, image }) {
+export default function ProjectCard({ name, href, image, priority = false }) {
   return (
     <div className="rounded-[28px] bg-[#f7f3e2] p-[26px] sm:p-7 sm:px-6 xl:px-7">
       {/* The screenshots carry their own browser chrome, cropped tight to the window edge;
@@ -9,7 +9,10 @@ export default function ProjectCard({ name, href, image }) {
       <img
         src={image}
         alt={`${name} website`}
-        loading="lazy"
+        width={1128}
+        height={700}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : undefined}
         className="block w-full rounded-[6px]"
       />
 
