@@ -6,26 +6,20 @@ import './index.css'
 import App from './App.jsx'
 import posthog, {
   isPostHogConfigured,
-  posthogHost,
+  POSTHOG_PROXY_PATH,
   posthogToken,
 } from './lib/posthog.js'
 
 if (isPostHogConfigured) {
   posthog.init(posthogToken, {
-    api_host: posthogHost,
+    api_host: POSTHOG_PROXY_PATH,
+    ui_host: 'https://us.posthog.com',
     defaults: '2026-01-30',
   })
 } else if (import.meta.env.DEV) {
-  if (!posthogToken) {
-    console.error(
-      'VITE_PUBLIC_POSTHOG_PROJECT_TOKEN variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once VITE_PUBLIC_POSTHOG_PROJECT_TOKEN is configured',
-    )
-  }
-  if (!posthogHost) {
-    console.error(
-      'VITE_PUBLIC_POSTHOG_HOST variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once VITE_PUBLIC_POSTHOG_HOST is configured',
-    )
-  }
+  console.error(
+    'VITE_PUBLIC_POSTHOG_PROJECT_TOKEN variable required by PostHog is missing or un-configured, this causes events to be silently missed. This error stops appearing once VITE_PUBLIC_POSTHOG_PROJECT_TOKEN is configured',
+  )
 }
 
 const app = (

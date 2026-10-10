@@ -1,8 +1,10 @@
 import posthog from "posthog-js";
 
+// Served by functions/relay-nd in production and by the Vite proxy in dev.
+export const POSTHOG_PROXY_PATH = "/relay-nd";
+
 export const posthogToken = import.meta.env.VITE_PUBLIC_POSTHOG_PROJECT_TOKEN;
-export const posthogHost = import.meta.env.VITE_PUBLIC_POSTHOG_HOST;
-export const isPostHogConfigured = Boolean(posthogToken && posthogHost);
+export const isPostHogConfigured = Boolean(posthogToken);
 
 export function capture(eventName, properties) {
   if (isPostHogConfigured) {
